@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { apiKey } from "../apiKey";
 export default {
   name: "Conversor",
   props: ["moedaA", "moedaB"],
@@ -20,12 +21,8 @@ export default {
   methods: {
     converter() {
       //variável usada para atribuir valores dentro da url
-      let de_para = this.moedaA + "_" + this.moedaB;
-
-      let url =
-        "http://free.currencyconverterapi.com/api/v5/convert?q=" +
-        de_para +
-        "&compact=y";
+      let de_para = `${this.moedaA}_${this.moedaB}`;
+      let url = `http://free.currencyconverterapi.com/api/v5/convert?q=${de_para}&compact=y&apiKey=${apiKey}`;
 
       fetch(url)
         .then((res) => {
